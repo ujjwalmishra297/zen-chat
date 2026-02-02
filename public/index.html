@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZenChat • Secure Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/styles/auth.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Auth Container -->
+  <div class="auth-container glass">
+
+    <h1 class="logo">Zen<span>Chat</span></h1>
+    <p class="tagline">Connect. Chat. Feel Real-Time.</p>
+
+    <!-- LOGIN -->
+    <form id="loginForm" class="form active">
+      <input type="email" id="loginEmail" placeholder="Email Address" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p class="switch">New here? <span onclick="toggleForm()">Create Account</span></p>
+    </form>
+
+    <!-- SIGNUP -->
+    <form id="signupForm" class="form">
+      <input type="text" id="signupUsername" placeholder="Username" required />
+      <input type="email" id="signupEmail" placeholder="Email Address" required />
+      <input type="password" id="signupPassword" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+      <p class="switch">Already have an account? <span onclick="toggleForm()">Login</span></p>
+    </form>
+
+  </div>
+
+  <!-- JS -->
+  <script type="module">
+    import { signup, login } from "/public/js/auth.js";
+
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    loginForm.onsubmit = e => {
+      e.preventDefault();
+      login(
+        loginEmail.value,
+        loginPassword.value
+      );
+    };
+
+    signupForm.onsubmit = e => {
+      e.preventDefault();
+      signup(
+        signupEmail.value,
+        signupPassword.value,
+        signupUsername.value
+      );
+    };
+
+    window.toggleForm = () => {
+      loginForm.classList.toggle("active");
+      signupForm.classList.toggle("active");
+    };
+  </script>
+
+</body>
+</html>

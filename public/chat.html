@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZenChat • Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/styles/chat.css">
+</head>
+<body>
+
+  <header class="chat-header">
+    <a href="users.html">←</a>
+    <div>
+      <h3 id="chatUsername">User</h3>
+      <small id="status">Offline</small>
+    </div>
+  </header>
+
+  <div class="chat-body" id="messages"></div>
+
+  <div class="typing" id="typing"></div>
+
+  <div class="chat-input">
+    <input type="text" id="msg" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script type="module" src="/public/js/chat.js"></script>
+</body>
+</html>
